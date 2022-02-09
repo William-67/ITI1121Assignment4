@@ -1,13 +1,15 @@
 package SEG2106.core;
-
-//%% NEW FILE newTrafficLight BEGINS HERE %%
+//%% NEW FILE NewTrafficLight BEGINS HERE %%
 
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.31.1.5860.78bb27cc6 modeling language!*/
 
 
+import SEG2106.core.EventHandler;
+import SEG2106.core.TrafficLightManager;
 
 // line 2 "model.ump"
+// line 161 "model.ump"
 public class NewTrafficLight implements EventHandler
 {
 
@@ -15,7 +17,7 @@ public class NewTrafficLight implements EventHandler
     // MEMBER VARIABLES
     //------------------------
 
-    //newTrafficLight State Machines
+    //NewTrafficLight State Machines
     public enum Mode { low, moderate, high }
     public enum ModeLow { Null, status }
     public enum ModeLowStatus { Null, northAndSouthLeftGreen, northAndSouthGreen, northAndSouthYellow, northAndSouthRed, westAndEastYellow }
@@ -265,6 +267,11 @@ public class NewTrafficLight implements EventHandler
                 setModeLowStatus(ModeLowStatus.northAndSouthRed);
                 wasEventProcessed = true;
                 break;
+            case westAndEastYellow:
+                exitModeLowStatus();
+                setModeLowStatus(ModeLowStatus.northAndSouthLeftGreen);
+                wasEventProcessed = true;
+                break;
             default:
                 // Other states do respond to this event
         }
@@ -281,6 +288,11 @@ public class NewTrafficLight implements EventHandler
                 setModeModerateStatus(ModeModerateStatus.southSideRed);
                 wasEventProcessed = true;
                 break;
+            case westAndEastYellow:
+                exitModeModerateStatus();
+                setModeModerateStatus(ModeModerateStatus.northAndLeftGreen);
+                wasEventProcessed = true;
+                break;
             default:
                 // Other states do respond to this event
         }
@@ -295,6 +307,11 @@ public class NewTrafficLight implements EventHandler
             case southSideYellow:
                 exitMode();
                 setModeModerateStatus(ModeModerateStatus.southSideRed);
+                wasEventProcessed = true;
+                break;
+            case westAndEastYellow:
+                exitMode();
+                setModeModerateStatus(ModeModerateStatus.northAndLeftGreen);
                 wasEventProcessed = true;
                 break;
             default:
@@ -541,7 +558,7 @@ public class NewTrafficLight implements EventHandler
                 break;
             case southSideYellow:
                 // line 72 "model.ump"
-                trafficLightManager.northYellow();
+                trafficLightManager.southYellow();
                 // line 73 "model.ump"
                 trafficLightManager.northRed();
                 // line 74 "model.ump"
@@ -551,9 +568,9 @@ public class NewTrafficLight implements EventHandler
                 break;
             case southSideRed:
                 // line 79 "model.ump"
-                trafficLightManager.southRed();
-                // line 80 "model.ump"
                 trafficLightManager.northRed();
+                // line 80 "model.ump"
+                trafficLightManager.southRed();
                 // line 81 "model.ump"
                 trafficLightManager.westGreen();
                 // line 82 "model.ump"
@@ -669,7 +686,7 @@ public class NewTrafficLight implements EventHandler
                 break;
             case southSideYellow:
                 // line 122 "model.ump"
-                trafficLightManager.northYellow();
+                trafficLightManager.southYellow();
                 // line 123 "model.ump"
                 trafficLightManager.northRed();
                 // line 124 "model.ump"
@@ -679,9 +696,9 @@ public class NewTrafficLight implements EventHandler
                 break;
             case southSideRed:
                 // line 129 "model.ump"
-                trafficLightManager.southRed();
-                // line 130 "model.ump"
                 trafficLightManager.northRed();
+                // line 130 "model.ump"
+                trafficLightManager.southRed();
                 // line 131 "model.ump"
                 trafficLightManager.westGreen();
                 // line 132 "model.ump"
