@@ -7,7 +7,7 @@ public class Main {
 		TrafficLightManager trafficLightManager = TrafficLightManager.getTrafficManager();
 		
 		// Create the traffic light state machine
-		new newTrafficLight(trafficLightManager);
+		new NewTrafficLight(trafficLightManager);
 		
 		// Set the traffic condition
 		if (args.length > 0){

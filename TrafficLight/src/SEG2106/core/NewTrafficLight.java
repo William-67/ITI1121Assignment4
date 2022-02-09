@@ -8,7 +8,7 @@ package SEG2106.core;
 
 
 // line 2 "model.ump"
-public class newTrafficLight implements EventHandler
+public class NewTrafficLight implements EventHandler
 {
 
     //------------------------
@@ -35,7 +35,7 @@ public class newTrafficLight implements EventHandler
     // CONSTRUCTOR
     //------------------------
     private TrafficLightManager trafficLightManager;
-    public newTrafficLight(TrafficLightManager trafficLightManager)
+    public NewTrafficLight(TrafficLightManager trafficLightManager)
     {
         this.trafficLightManager = trafficLightManager;
 
